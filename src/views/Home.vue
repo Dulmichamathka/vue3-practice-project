@@ -6,7 +6,7 @@
       placeholder="Search for Meals"
     />
 
-    <div class="flex justify-center gap-1">
+    <div class="flex justify-center gap-2 mt-2">
       <router-link
         :to="{ name: 'byLetter', params: { letter } }"
         v-for="letter in letters"
@@ -25,7 +25,7 @@ import { ref } from "vue";
 import { onMounted } from "vue";
 
 const store = useStore();
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 const ingredients = ref([]);
 
 onMounted(async () => {
