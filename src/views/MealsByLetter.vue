@@ -8,22 +8,32 @@
       {{ letter }}
     </router-link>
   </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8">
-    <MealItem v-for="meal in meals" :key="meal.idMeal" :meal="meal" />
-  </div>
+  <Meals :meals="meals" />
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, watch } from "vue";
 import store from "../store";
 import { useRoute } from "vue-router";
-import MealItem from "../components/MealItem.vue";
+import Meals from "../components/Meals.vue";
 
 const route = useRoute();
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const meals = computed(() => store.state.mealsByLetter);
 
+watch(
+  () => route.params.letter,
+  (letter) => {
+    if (letter) {
+      store.dispatch("searchMealsByLetter", letter);
+    }
+  }
+);
+/*This error appears because the MealsByLetter component tries to fetch meals
+ based on route.params.letter, but letter may not be defined initially.*/
+
 onMounted(() => {
-  store.dispatch("searchMealsByLetter", route.params.letter);
+  const letter = route.params.letter; // Default to 'A' if no letter is provided
+  store.dispatch("searchMealsByLetter", letter);
 });
 </script>

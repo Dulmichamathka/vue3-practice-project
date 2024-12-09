@@ -1,11 +1,11 @@
 export function setSearchedMeals(state, meals) {
-  state.searchedMeals = meals;
+  state.searchedMeals = meals || [];
 }
 
 export function setMealsByLetter(state, meals) {
-  state.mealsByLetter = meals;
+  state.mealsByLetter = meals || [];
 }
 
 export function setMealsByIngredient(state, meals) {
-  state.mealsByIngredeint = meals;
+  state.mealsByIngredeint = meals || [];
 }

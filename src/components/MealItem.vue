@@ -4,7 +4,7 @@
       <img
         :src="meal.strMealThumb"
         :alt="meal.strMeal"
-        class="rounded-t-xl w-full h-48 object-cover"
+        class="object-cover w-full h-48 rounded-t-xl"
       />
     </router-link>
     <div class="p-3">
@@ -14,7 +14,9 @@
         repellendus eligendi porro culpa soluta suscipit mollitia nesciunt
       </p>
       <div class="flex items-center justify-between">
-        <YouTubeButton :href="meal.strYoutube">You Tube</YouTubeButton>
+        <YouTubeButton v-if="meal.strYoutube" :href="meal.strYoutube"
+          >You Tube</YouTubeButton
+        >
       </div>
     </div>
   </div>
