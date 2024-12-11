@@ -1,10 +1,21 @@
 <template>
-  <div class="p-8">
-    <h1 class="mb-4 text-4xl font-bold">Ingredients</h1>
+  <div class="p-6">
+    <h1
+      class="mb-4 text-4xl font-bold"
+      style="
+        text-shadow: 0 0 15px #f97316;
+        color: #f97316;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: cursive;
+      "
+    >
+      Ingredients
+    </h1>
     <input
       type="text"
       v-model="keyword"
-      class="w-full mb-3 bg-white border-2 border-gray-200 rounded"
+      class="w-full mb-3 bg-white border-2 border-orange-500 rounded focus:border-gray-200 focus:ring focus:ring-orange-500"
       placeholder="Search for Ingredients"
     />
     <router-link
